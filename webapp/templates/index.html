@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Restricted area</title>
+    </head>
+    <body>
+    {% if error %}
+    <red>Looks like you tried to guess a hash but wrongly</red>
+    {% else %}
+        Hello, {{ user }}.
+
+        Pass on <pre>?password=...</pre> to get access. Can you guess it?
+    {% endif %}
+    </body>
+</html>
