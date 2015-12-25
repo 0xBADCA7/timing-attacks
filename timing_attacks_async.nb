@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17043,        395]
-NotebookOptionsPosition[     16556,        375]
-NotebookOutlinePosition[     16985,        392]
-CellTagsIndexPosition[     16942,        389]
+NotebookDataLength[     17093,        396]
+NotebookOptionsPosition[     16606,        376]
+NotebookOutlinePosition[     17035,        393]
+CellTagsIndexPosition[     16992,        390]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -39,8 +39,8 @@ Cell[BoxData[
         ",", "\"\<c\>\"", ",", "\"\<d\>\"", ",", "\"\<e\>\"", ",", 
        "\"\<f\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"uri", "=", "\"\<http://standard.io:8080/?password=\>\""}], ";"}],
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"uri", "=", "\"\<http://localhost:8080/?password=\>\""}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Makes", " ", "async", " ", "requests"}], "*)"}], 
    "\[IndentingNewLine]", 
@@ -92,7 +92,7 @@ Cell[BoxData[
           RowBox[{
           "#1", ",", "#2", ",", "#3", ",", " ", "payload", ",", "timeStarted",
             ",", " ", "iterator"}], "]"}], "&"}]}], "]"}], ";"}], 
-     "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "\n", 
+     "\[IndentingNewLine]", ")"}]}], "\n", "\[IndentingNewLine]", 
    RowBox[{"For", " ", "[", 
     RowBox[{
      RowBox[{"j", "=", "1"}], ",", 
@@ -186,7 +186,8 @@ Cell[BoxData[
    3.659619486178977*^9}, {3.65961951766094*^9, 3.659619536881527*^9}, {
    3.6596196260788803`*^9, 3.659619771043404*^9}, {3.659620489498457*^9, 
    3.659620534789575*^9}, {3.659621348642798*^9, 3.659621358487288*^9}, {
-   3.659957100362988*^9, 3.659957116714117*^9}},
+   3.659957100362988*^9, 3.659957116714117*^9}, {3.6600378328926888`*^9, 
+   3.660037833747127*^9}},
  FontFamily->"PragmataPro",
  FontSize->14,
  FontWeight->"Plain"],
@@ -391,11 +392,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 9453, 171, 708, "Input"],
+Cell[558, 20, 9503, 172, 708, "Input"],
 Cell[CellGroupData[{
-Cell[10036, 195, 1605, 39, 170, "Input"],
-Cell[11644, 236, 258, 9, 28, "Output"],
-Cell[11905, 247, 4635, 125, 241, "Output"]
+Cell[10086, 196, 1605, 39, 170, "Input"],
+Cell[11694, 237, 258, 9, 28, "Output"],
+Cell[11955, 248, 4635, 125, 241, "Output"]
 }, Open  ]]
 }
 ]

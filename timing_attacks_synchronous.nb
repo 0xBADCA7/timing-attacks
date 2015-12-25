@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31045,        737]
-NotebookOptionsPosition[     30154,        706]
-NotebookOutlinePosition[     30737,        727]
-CellTagsIndexPosition[     30694,        724]
+NotebookDataLength[     31095,        738]
+NotebookOptionsPosition[     30204,        707]
+NotebookOutlinePosition[     30787,        728]
+CellTagsIndexPosition[     30744,        725]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -48,8 +48,8 @@ Cell[BoxData[
      RowBox[{"{", "}"}]}], ";"}], " ", 
    RowBox[{"(*", "Guesses", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"uri", "=", "\"\<http://standard.io:8080/?password=\>\""}], ";"}],
-    "\[IndentingNewLine]", 
+    RowBox[{"uri", "=", "\"\<http://localhost:8080/?password=\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"HASHLENGTH", " ", "=", " ", "40"}], ";"}], "\[IndentingNewLine]",
     "\[IndentingNewLine]", 
@@ -186,7 +186,8 @@ Cell[BoxData[
    3.659634065389617*^9, 3.659634065959271*^9}, {3.659634101726347*^9, 
    3.659634102774181*^9}, 3.6596342264612913`*^9, {3.659634361528178*^9, 
    3.6596343634105453`*^9}, 3.659634493924801*^9, {3.659634694875978*^9, 
-   3.659634705999799*^9}, {3.6599523029008636`*^9, 3.659952304827896*^9}},
+   3.659634705999799*^9}, {3.6599523029008636`*^9, 3.659952304827896*^9}, {
+   3.660037825910096*^9, 3.6600378268133163`*^9}},
  FontFamily->"The Sans Mono Condensed-",
  FontSize->13],
 
@@ -727,18 +728,18 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 7792, 168, 768, "Input"],
-Cell[8375, 192, 167, 4, 21, "Print"]
+Cell[580, 22, 7842, 169, 768, "Input"],
+Cell[8425, 193, 167, 4, 21, "Print"]
 }, Open  ]],
-Cell[8557, 199, 44, 1, 4, "PageBreak",
+Cell[8607, 200, 44, 1, 4, "PageBreak",
  PageBreakBelow->True],
-Cell[8604, 202, 380, 6, 22, "Text"],
-Cell[8987, 210, 6619, 151, 228, "Text"],
-Cell[15609, 363, 6817, 153, 253, "Text"],
-Cell[22429, 518, 7441, 177, 228, "Text"],
-Cell[29873, 697, 84, 1, 20, "Text"],
-Cell[29960, 700, 103, 1, 29, "Input"],
-Cell[30066, 703, 84, 1, 20, "Text"]
+Cell[8654, 203, 380, 6, 22, "Text"],
+Cell[9037, 211, 6619, 151, 228, "Text"],
+Cell[15659, 364, 6817, 153, 253, "Text"],
+Cell[22479, 519, 7441, 177, 228, "Text"],
+Cell[29923, 698, 84, 1, 20, "Text"],
+Cell[30010, 701, 103, 1, 29, "Input"],
+Cell[30116, 704, 84, 1, 20, "Text"]
 }
 ]
 *)
