@@ -8,7 +8,11 @@
     {% else %}
         Hello, {{ user }}.
 
-        Pass on <pre>?password=...</pre> to get access. Can you guess it?
+        {% if user == 'admin' %}
+        Access granted
+        {% else %}
+        Hint: Pass <pre>?password=...&user=...</pre> or <pre>?password=...</pre> to get access. Can you guess it?
+        {% endif %}
     {% endif %}
     </body>
 </html>
