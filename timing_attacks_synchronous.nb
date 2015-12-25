@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38491,        912]
-NotebookOptionsPosition[     37763,        886]
-NotebookOutlinePosition[     38346,        907]
-CellTagsIndexPosition[     38303,        904]
+NotebookDataLength[     31045,        737]
+NotebookOptionsPosition[     30154,        706]
+NotebookOutlinePosition[     30737,        727]
+CellTagsIndexPosition[     30694,        724]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,17 +32,27 @@ Cell[BoxData[
     RowBox[{"timingsList", " ", "=", " ", 
      RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"frequencies", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"alphabet", " ", "=", " ", 
      RowBox[{"{", 
       RowBox[{
-      "\"\<0\>\"", ",", "\"\<1\>\"", ",", "\"\<2\>\"", ",", "\"\<3\>\"", ",", 
-       "\"\<4\>\"", ",", "\"\<5\>\"", ",", "\"\<6\>\"", ",", "\"\<7\>\"", 
-       ",", "\"\<8\>\"", ",", "\"\<9\>\"", ",", "\"\<a\>\"", ",", "\"\<b\>\"",
+      "\"\<1\>\"", ",", "\"\<2\>\"", ",", "\"\<3\>\"", ",", "\"\<4\>\"", ",", 
+       "\"\<5\>\"", ",", "\"\<6\>\"", ",", "\"\<7\>\"", ",", "\"\<8\>\"", 
+       ",", "\"\<9\>\"", ",", "\"\<0\>\"", ",", "\"\<a\>\"", ",", "\"\<b\>\"",
         ",", "\"\<c\>\"", ",", "\"\<d\>\"", ",", "\"\<e\>\"", ",", 
        "\"\<f\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"uri", "=", "\"\<http://localhost:8080/?password=\>\""}], ";"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"reducedAlphabet", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], " ", 
+   RowBox[{"(*", "Guesses", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uri", "=", "\"\<http://standard.io:8080/?password=\>\""}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"HASHLENGTH", " ", "=", " ", "40"}], ";"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Iterator", " ", "function"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -68,339 +78,135 @@ Cell[BoxData[
       "\[IndentingNewLine]", 
       RowBox[{"timeDone", " ", "=", " ", 
        RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
+      RowBox[{"timeDifference", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"AbsoluteTime", "[", "]"}], "-", " ", "timeStarted"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"AppendTo", "[", 
        RowBox[{"timingsList", ",", " ", 
         RowBox[{"{", 
-         RowBox[{"timeStarted", ",", "timeDone", ",", 
-          RowBox[{
-           RowBox[{"AbsoluteTime", "[", "]"}], "-", " ", "timeStarted"}], ",",
-           " ", "payload", ",", " ", "iterator"}], "}"}]}], "]"}], ";"}], 
-     "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", 
-    RowBox[{"Payload", " ", "generator"}], "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"For", " ", "[", 
-    RowBox[{
-     RowBox[{"j", "=", "1"}], ",", 
-     RowBox[{"j", " ", "\[LessEqual]", " ", 
-      RowBox[{"Length", "[", "alphabet", "]"}]}], ",", 
-     RowBox[{"j", "++"}], ",", " ", 
-     RowBox[{"(", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"candidate", "=", " ", 
-        RowBox[{"\"\<\>\"", " ", "<>", 
-         RowBox[{"PadRight", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"alphabet", "[", 
-             RowBox[{"[", "j", "]"}], "]"}], "}"}], ",", " ", "40", ",", " ", 
-           "\"\<0\>\""}], "]"}]}]}], ";", "\[IndentingNewLine]", 
-       "\[IndentingNewLine]", 
-       RowBox[{"(*", 
-        RowBox[{"Feed", " ", "into", " ", 
-         RowBox[{"iterator", "/", "request"}], " ", "dispatcher"}], "*)"}], 
-       "\[IndentingNewLine]", 
-       RowBox[{"enumFunc", "[", 
-        RowBox[{"candidate", ",", " ", "j"}], "]"}]}], "\[IndentingNewLine]", 
-      ")"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "Print", " ", "a", " ", "table", " ", "with", " ", "the", " ", "response",
-      " ", "timings"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"TableForm", "[", 
-    RowBox[{"timingsList", ",", 
-     RowBox[{"TableHeadings", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"None", ",", " ", 
+         RowBox[{
+         "timeStarted", ",", "timeDone", ",", "timeDifference", ",", " ", 
+          "payload", ",", " ", "iterator"}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"frequencies", ",", " ", 
         RowBox[{"{", 
          RowBox[{
-         "\"\<Time started\>\"", ",", " ", "\"\<Done\>\"", ",", 
-          "\"\<Difference\>\"", ",", " ", "\"\<Payload\>\"", ",", " ", 
-          "\"\<Request no.\>\""}], "}"}]}], "}"}]}]}], "]"}], 
+         "payload", ",", " ", "iterator", ",", " ", "timeDifference"}], 
+         "}"}]}], "]"}]}], "\[IndentingNewLine]", ")"}]}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"Show", "[", 
-    RowBox[{
-     RowBox[{"ListPlot", "[", 
-      RowBox[{
-       RowBox[{"timingsList", "\[LeftDoubleBracket]", 
-        RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-       RowBox[{"PlotTheme", "\[Rule]", "\"\<Business\>\""}], ",", 
-       RowBox[{"AxesLabel", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"\"\<request no.\>\"", ",", "\"\<time\>\""}], "}"}]}], ",", 
-       RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}], ",", 
-     RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", " ", 
-     RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]}]], "Input",
+   RowBox[{"(*", 
+    RowBox[{"Payload", " ", "generator"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", " ", "[", 
+     RowBox[{
+      RowBox[{"q", "=", "1"}], ",", " ", 
+      RowBox[{"q", "\[LessEqual]", "10"}], ",", 
+      RowBox[{"q", "++"}], ",", " ", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Only", " ", "10", " ", "repetitions", " ", "of", " ", "the", " ", 
+        "same", " ", "payload"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", " ", "[", 
+         RowBox[{
+          RowBox[{"j", "=", "1"}], ",", 
+          RowBox[{"j", " ", "\[LessEqual]", " ", 
+           RowBox[{"Length", "[", "alphabet", "]"}]}], ",", 
+          RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"candidate", "=", " ", 
+             RowBox[{"\"\<\>\"", " ", "<>", 
+              RowBox[{"PadRight", "[", 
+               RowBox[{
+                RowBox[{"Join", "[", 
+                 RowBox[{"reducedAlphabet", ",", 
+                  RowBox[{"{", 
+                   RowBox[{"alphabet", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], "}"}]}], "]"}], ",", 
+                "HASHLENGTH", ",", " ", "\"\<0\>\""}], "]"}]}]}], ";", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{"Feed", " ", "into", " ", 
+              RowBox[{"iterator", "/", "request"}], " ", "dispatcher"}], 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"enumFunc", "[", 
+             RowBox[{"candidate", ",", " ", "q"}], "]"}]}], 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", ")"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Print", " ", "a", " ", "table", " ", "with", " ", "the", " ", 
+          "response", " ", "timings"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"TableForm", "[", 
+          RowBox[{"timingsList", ",", 
+           RowBox[{"TableHeadings", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"None", ",", " ", 
+              RowBox[{"{", 
+               RowBox[{
+               "\"\<Time started\>\"", ",", " ", "\"\<Done\>\"", ",", 
+                "\"\<Difference\>\"", ",", " ", "\"\<Payload\>\"", ",", " ", 
+                "\"\<Request no.\>\""}], "}"}]}], "}"}]}]}], "]"}], "]"}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"Show", "[", 
+          RowBox[{
+           RowBox[{"ListPlot", "[", 
+            RowBox[{
+             RowBox[{"timingsList", "\[LeftDoubleBracket]", 
+              RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"PlotTheme", "\[Rule]", "\"\<Business\>\""}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<request no.\>\"", ",", "\"\<time\>\""}], "}"}]}], 
+             ",", 
+             RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", " ", 
+           RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}]}], 
+       "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "]"}], 
+    ";"}]}]}]], "Input",
  CellChangeTimes->{{3.659618294299457*^9, 3.659618367040633*^9}, {
-  3.659618998084827*^9, 3.659619000374525*^9}, {3.659619083560952*^9, 
-  3.6596190921527357`*^9}, {3.659619307915758*^9, 3.659619308214089*^9}, {
-  3.6596204786914988`*^9, 3.659620481596632*^9}, {3.659620545905635*^9, 
-  3.659620556367393*^9}, {3.6596227077341833`*^9, 3.659622831494794*^9}},
+   3.659618998084827*^9, 3.659619000374525*^9}, {3.659619083560952*^9, 
+   3.6596190921527357`*^9}, {3.659619307915758*^9, 3.659619308214089*^9}, {
+   3.6596204786914988`*^9, 3.659620481596632*^9}, {3.659620545905635*^9, 
+   3.659620556367393*^9}, {3.6596227077341833`*^9, 3.659622831494794*^9}, {
+   3.659630616993204*^9, 3.659630628598955*^9}, {3.6596314643778887`*^9, 
+   3.6596315490676413`*^9}, {3.659631648460987*^9, 3.659631685634348*^9}, {
+   3.6596317170898438`*^9, 3.659631811186026*^9}, {3.659632009986121*^9, 
+   3.6596320267669067`*^9}, {3.659632063144923*^9, 3.65963207555538*^9}, 
+   3.659632238005726*^9, {3.6596326998319893`*^9, 3.659632704878436*^9}, {
+   3.659632977500434*^9, 3.6596330001011763`*^9}, {3.65963387173993*^9, 
+   3.6596338741504507`*^9}, {3.65963396026483*^9, 3.659634025944481*^9}, {
+   3.659634065389617*^9, 3.659634065959271*^9}, {3.659634101726347*^9, 
+   3.659634102774181*^9}, 3.6596342264612913`*^9, {3.659634361528178*^9, 
+   3.6596343634105453`*^9}, 3.659634493924801*^9, {3.659634694875978*^9, 
+   3.659634705999799*^9}, {3.6599523029008636`*^9, 3.659952304827896*^9}},
  FontFamily->"The Sans Mono Condensed-",
  FontSize->13],
 
-Cell[BoxData[
- TagBox[
-  TagBox[GridBox[{
-     {
-      TagBox["\<\"Time started\"\>",
-       HoldForm], 
-      TagBox["\<\"Done\"\>",
-       HoldForm], 
-      TagBox["\<\"Difference\"\>",
-       HoldForm], 
-      TagBox["\<\"Payload\"\>",
-       HoldForm], 
-      TagBox["\<\"Request no.\"\>",
-       HoldForm]},
-     {"3.659626985776746`16.316011810544932*^9", 
-      "3.659626985784732`16.31601181054588*^9", 
-      "0.008016`4.355502702019144", \
-"\<\"0000000000000000000000000000000000000000\"\>", "1"},
-     {"3.659626985784851`16.316011810545895*^9", 
-      "3.65962698579334`16.316011810546904*^9", 
-      "0.008507`4.3813214263008735", \
-"\<\"1000000000000000000000000000000000000000\"\>", "2"},
-     {"3.659626985793418`16.31601181054691*^9", 
-      "3.659626985799396`16.31601181054762*^9", 
-      "0.006003`4.229913336851847", \
-"\<\"2000000000000000000000000000000000000000\"\>", "3"},
-     {"3.659626985799484`16.31601181054763*^9", 
-      "3.659626985806445`16.316011810548456*^9", 
-      "0.006978`4.295275958608067", \
-"\<\"3000000000000000000000000000000000000000\"\>", "4"},
-     {"3.659626985806524`16.316011810548464*^9", 
-      "3.659626985817747`16.3160118105498*^9", 
-      "0.011241`4.502349941309431", \
-"\<\"4000000000000000000000000000000000000000\"\>", "5"},
-     {"3.659626985817828`16.316011810549806*^9", 
-      "3.659626985824822`16.316011810550638*^9", 
-      "0.007011`4.297324960607862", \
-"\<\"5000000000000000000000000000000000000000\"\>", "6"},
-     {"3.659626985824898`16.316011810550645*^9", 
-      "3.659626985832728`16.316011810551576*^9", 
-      "0.00785`4.346414650241227", \
-"\<\"6000000000000000000000000000000000000000\"\>", "7"},
-     {"3.659626985832806`16.316011810551583*^9", 
-      "3.659626985839248`16.31601181055235*^9", 
-      "0.006459`4.261710278039122", \
-"\<\"7000000000000000000000000000000000000000\"\>", "8"},
-     {"3.659626985839325`16.316011810552357*^9", 
-      "3.659626985845514`16.316011810553093*^9", 
-      "0.006208`4.244496701746103", \
-"\<\"8000000000000000000000000000000000000000\"\>", "9"},
-     {"3.659626985845594`16.316011810553103*^9", 
-      "3.65962698585234`16.316011810553903*^9", 
-      "0.00677`4.28213366218112", \
-"\<\"9000000000000000000000000000000000000000\"\>", "10"},
-     {"3.659626985852443`16.316011810553913*^9", 
-      "3.659626985859264`16.316011810554723*^9", 
-      "0.006848`4.287108745165067", \
-"\<\"a000000000000000000000000000000000000000\"\>", "11"},
-     {"3.659626985859384`16.31601181055474*^9", 
-      "3.659626985865788`16.316011810555498*^9", 
-      "0.006427`4.259553293406375", \
-"\<\"b000000000000000000000000000000000000000\"\>", "12"},
-     {"3.659626985865877`16.31601181055551*^9", 
-      "3.659626985872331`16.316011810556276*^9", 
-      "0.006479`4.2630529734413", \
-"\<\"c000000000000000000000000000000000000000\"\>", "13"},
-     {"3.659626985872453`16.31601181055629*^9", 
-      "3.659626985878778`16.316011810557043*^9", 
-      "0.006343`4.253839704893434", \
-"\<\"d000000000000000000000000000000000000000\"\>", "14"},
-     {"3.659626985878858`16.31601181055705*^9", 
-      "3.659626985885582`16.316011810557846*^9", 
-      "0.006749`4.280784421637362", \
-"\<\"e000000000000000000000000000000000000000\"\>", "15"},
-     {"3.659626985885696`16.316011810557864*^9", 
-      "3.659626985892382`16.316011810558653*^9", 
-      "0.006704`4.277878999118196", \
-"\<\"f000000000000000000000000000000000000000\"\>", "16"}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-      "RowsIndexed" -> {}},
-    GridBoxDividers->{
-     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
-      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[2.0999999999999996`]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}],
-   {None, OutputFormsDump`HeadedColumns}],
-  Function[BoxForm`e$, 
-   TableForm[
-   BoxForm`e$, 
-    TableHeadings -> {
-     None, {"Time started", "Done", "Difference", "Payload", 
-       "Request no."}}]]]], "Output",
- CellChangeTimes->{
-  3.6596214824043617`*^9, 3.6596215159592037`*^9, {3.659622412031543*^9, 
-   3.6596224209929523`*^9}, {3.6596224853326187`*^9, 3.659622499655892*^9}, 
-   3.6596225567938013`*^9, 3.659622610454651*^9, {3.65962271693007*^9, 
-   3.659622726500723*^9}, {3.659622760400755*^9, 3.659622869119817*^9}, {
-   3.659622942512452*^9, 3.659622989119238*^9}, {3.659623034351975*^9, 
-   3.6596230509659433`*^9}, {3.659623190690832*^9, 3.65962324732229*^9}, {
-   3.659623309271818*^9, 3.659623386082465*^9}}],
+Cell[BoxData[""], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{3.659634501687088*^9, 3.6596345475372257`*^9, 
+  3.659634578077112*^9}]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True],
 
 Cell[BoxData[
- GraphicsBox[{{}, {{{}, {}, {}, {}, 
-     {RGBColor[0.34398, 0.49112, 0.89936], Opacity[0.3], 
-      LineBox[{{1., 0.0057411}, {1., 0.008016}}], 
-      LineBox[{{2., 0.0057411}, {2., 0.008507}}], 
-      LineBox[{{3., 0.0057411}, {3., 0.006003}}], 
-      LineBox[{{4., 0.0057411}, {4., 0.006978}}], 
-      LineBox[{{5., 0.0057411}, {5., 0.011241}}], 
-      LineBox[{{6., 0.0057411}, {6., 0.007011}}], 
-      LineBox[{{7., 0.0057411}, {7., 0.00785}}], 
-      LineBox[{{8., 0.0057411}, {8., 0.006459}}], 
-      LineBox[{{9., 0.0057411}, {9., 0.006208}}], 
-      LineBox[{{10., 0.0057411}, {10., 0.00677}}], 
-      LineBox[{{11., 0.0057411}, {11., 0.006848}}], 
-      LineBox[{{12., 0.0057411}, {12., 0.006427}}], 
-      LineBox[{{13., 0.0057411}, {13., 0.006479}}], 
-      LineBox[{{14., 0.0057411}, {14., 0.006343}}], 
-      LineBox[{{15., 0.0057411}, {15., 0.006749}}], 
-      LineBox[{{16., 0.0057411}, {16., 0.006704}}]}}, {
-     {RGBColor[0.34398, 0.49112, 0.89936], PointSize[0.019444444444444445`], 
-      AbsoluteThickness[3], CapForm["Butt"], 
-      GeometricTransformationBox[InsetBox[
-        GraphicsBox[
-         {RGBColor[0.34398, 0.49112, 0.89936], PointSize[
-          0.019444444444444445`], AbsoluteThickness[3], CapForm["Butt"], 
-          {GrayLevel[1], DiskBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}, 
-          {AbsoluteThickness[1.5], Dashing[{}], 
-           CircleBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}}], {0., 0.}], {{{1.,
-        0.008016}}, {{2., 0.008507}}, {{3., 0.006003}}, {{4., 0.006978}}, {{
-       5., 0.011241}}, {{6., 0.007011}}, {{7., 0.00785}}, {{8., 0.006459}}, {{
-       9., 0.006208}}, {{10., 0.00677}}, {{11., 0.006848}}, {{12., 
-       0.006427}}, {{13., 0.006479}}, {{14., 0.006343}}, {{15., 0.006749}}, {{
-       16., 0.006704}}}]}, {}}}, {}},
-  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
-  Axes->{False, False},
-  AxesLabel->{
-    FormBox["\"request no.\"", TraditionalForm], 
-    FormBox["\"time\"", TraditionalForm]},
-  AxesOrigin->{0, 0.0057411},
-  DisplayFunction->Identity,
-  Frame->{{True, False}, {True, False}},
-  FrameLabel->{{None, None}, {None, None}},
-  FrameStyle->{{
-     StrokeForm[
-      Opacity[0]], 
-     StrokeForm[
-      Opacity[0]]}, {Automatic, None}},
-  FrameTicks->FrontEndValueCache[{{Charting`FindScaledTicks[
-       (Charting`SimpleTicks[#, #2, 6]& )[
-        SlotSequence[1]], {Identity, Identity}]& , None}, {
-     Charting`FindScaledTicks[
-       (Charting`SimpleTicks[#, #2, 6]& )[
-        SlotSequence[1]], {Identity, Identity}]& , None}}, {{{{0.006, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.006\"", 0.006, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.007, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.007\"", 0.007, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.008, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.008\"", 0.008, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.009, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.009\"", 0.009, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.01, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.010\"", 0.01, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.011, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.011\"", 0.011, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 3.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}}, None}, {{{2.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"2.5\"", 2.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {5., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"5.0\"", 5., AutoDelete -> True], NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {7.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"7.5\"", 7.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {10., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"10.0\"", 10., AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {12.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"12.5\"", 12.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {15., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"15.0\"", 15., AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}}, None}}],
-  GridLines->{None, Automatic},
-  GridLinesStyle->Directive[
-    GrayLevel[0.4, 0.5], 
-    AbsoluteThickness[1], 
-    AbsoluteDashing[{1, 2}]],
-  ImageSize->Medium,
-  Method->{},
-  PlotRange->All,
-  PlotRangeClipping->True,
-  PlotRangePadding->{{
-     Scaled[0.02], 
-     Scaled[0.02]}, {
-     Scaled[0.05], 
-     Scaled[0.05]}},
-  Ticks->{Charting`FindScaledTicks[
-     (Charting`SimpleTicks[#, #2, 6]& )[
-      SlotSequence[1]], {Identity, Identity}]& , Charting`FindScaledTicks[
-     (Charting`SimpleTicks[#, #2, 6]& )[
-      SlotSequence[1]], {Identity, Identity}]& }]], "Output",
- CellChangeTimes->{
-  3.6596214824043617`*^9, 3.6596215159592037`*^9, {3.659622412031543*^9, 
-   3.6596224209929523`*^9}, {3.6596224853326187`*^9, 3.659622499655892*^9}, 
-   3.6596225567938013`*^9, 3.659622610454651*^9, {3.65962271693007*^9, 
-   3.659622726500723*^9}, {3.659622760400755*^9, 3.659622869119817*^9}, {
-   3.659622942512452*^9, 3.659622989119238*^9}, {3.659623034351975*^9, 
-   3.6596230509659433`*^9}, {3.659623190690832*^9, 3.65962324732229*^9}, {
-   3.659623309271818*^9, 3.65962338618922*^9}}]
-}, Open  ]],
+ RowBox[{"Here", " ", "are", " ", "some", " ", "examples", " ", "from", " ", 
+  "different", " ", "implementations"}]], "Text",
+ CellChangeTimes->{{3.6596225598087263`*^9, 3.659622574478444*^9}, {
+   3.659622657425501*^9, 3.6596226692686*^9}, {3.6596230621691227`*^9, 
+   3.659623110220495*^9}, 3.65962314605717*^9, {3.659634606193386*^9, 
+   3.659634685887968*^9}}],
 
 Cell[BoxData[
  GraphicsBox[{{}, {{{}, {}, {}, {}, 
@@ -552,158 +358,163 @@ Cell[BoxData[
       SlotSequence[1]], {Identity, Identity}]& }]], "Text",
  CellChangeTimes->{{3.6596225598087263`*^9, 3.659622574478444*^9}, {
    3.659622657425501*^9, 3.6596226692686*^9}, {3.6596230621691227`*^9, 
-   3.659623110220495*^9}, 3.65962314605717*^9}],
+   3.659623110220495*^9}, 3.65962314605717*^9, {3.659634606193386*^9, 
+   3.659634685887968*^9}}],
 
 Cell[BoxData[
- GraphicsBox[{{}, {{{}, {}, {}, {}, 
-     {RGBColor[0.34398, 0.49112, 0.89936], Opacity[0.3], 
-      LineBox[{{1., 0.00581725}, {1., 0.006271}}], 
-      LineBox[{{2., 0.00581725}, {2., 0.006639}}], 
-      LineBox[{{3., 0.00581725}, {3., 0.006946}}], 
-      LineBox[{{4., 0.00581725}, {4., 0.006195}}], 
-      LineBox[{{5., 0.00581725}, {5., 0.006021}}], 
-      LineBox[{{6., 0.00581725}, {6., 0.006632}}], 
-      LineBox[{{7., 0.00581725}, {7., 0.006618}}], 
-      LineBox[{{8., 0.00581725}, {8., 0.005954}}], 
-      LineBox[{{9., 0.00581725}, {9., 0.006263}}], 
-      LineBox[{{10., 0.00581725}, {10., 0.006017}}], 
-      LineBox[{{11., 0.00581725}, {11., 0.005871}}], 
-      LineBox[{{12., 0.00581725}, {12., 0.005979}}], 
-      LineBox[{{13., 0.00581725}, {13., 0.006151}}], 
-      LineBox[{{14., 0.00581725}, {14., 0.005877}}], 
-      LineBox[{{15., 0.00581725}, {15., 0.006075}}], 
-      LineBox[{{16., 0.00581725}, {16., 0.006123}}]}}, {
-     {RGBColor[0.34398, 0.49112, 0.89936], PointSize[0.019444444444444445`], 
-      AbsoluteThickness[3], CapForm["Butt"], 
-      GeometricTransformationBox[InsetBox[
-        GraphicsBox[
-         {RGBColor[0.34398, 0.49112, 0.89936], PointSize[
-          0.019444444444444445`], AbsoluteThickness[3], CapForm["Butt"], 
-          {GrayLevel[1], DiskBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}, 
-          {AbsoluteThickness[1.5], Dashing[{}], 
-           CircleBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}}], {0., 0.}], {{{1.,
-        0.006271}}, {{2., 0.006639}}, {{3., 0.006946}}, {{4., 0.006195}}, {{
-       5., 0.006021}}, {{6., 0.006632}}, {{7., 0.006618}}, {{8., 
-       0.005954}}, {{9., 0.006263}}, {{10., 0.006017}}, {{11., 0.005871}}, {{
-       12., 0.005979}}, {{13., 0.006151}}, {{14., 0.005877}}, {{15., 
-       0.006075}}, {{16., 0.006123}}}]}, {}}}, 
-   InsetBox["", {11.176841085271317`, 0.006927637924392021}, {Left, Top}, {
-    3.68217054263566, Automatic},
-    Alignment->{Left, Top}], InsetBox[
-    StyleBox[
-     RowBox[{
-      RowBox[{"sha1", "(", ")"}], " ", "inside", " ", "byte", " ", 
-      "comparison"}],
-     FontFamily->"The Sans Mono Condensed-",
-     FontSize->12,
-     FontWeight->"Bold"], {7.688468992248058, 0.006864714378383802}, {
-    Left, Baseline},
-    Alignment->{Left, Top}]},
-  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
-  Axes->{False, False},
-  AxesLabel->{
-    FormBox["\"request no.\"", TraditionalForm], 
-    FormBox["\"time\"", TraditionalForm]},
-  AxesOrigin->{0, 0.00581725},
-  DisplayFunction->Identity,
-  Frame->{{True, False}, {True, False}},
-  FrameLabel->{{None, None}, {None, None}},
-  FrameStyle->{{
-     StrokeForm[
-      Opacity[0]], 
-     StrokeForm[
-      Opacity[0]]}, {Automatic, None}},
-  FrameTicks->FrontEndValueCache[{{Charting`FindScaledTicks[
-       (Charting`SimpleTicks[#, #2, 6]& )[
-        SlotSequence[1]], {Identity, Identity}]& , None}, {
-     Charting`FindScaledTicks[
-       (Charting`SimpleTicks[#, #2, 6]& )[
-        SlotSequence[1]], {Identity, Identity}]& , None}}, {{{{0.006, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.00600\"", 0.006, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.00625, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.00625\"", 0.00625, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.0065, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.00650\"", 0.0065, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.00675, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.00675\"", 0.00675, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {0.007, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"0.00700\"", 0.007, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}}, None}, {{{2.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"2.5\"", 2.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {5., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"5.0\"", 5., AutoDelete -> True], NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {7.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"7.5\"", 7.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {10., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"10.0\"", 10., AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {12.5, 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"12.5\"", 12.5, AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}, {15., 
-        FormBox[
-         TagBox[
-          InterpretationBox["\"15.0\"", 15., AutoDelete -> True], 
-          NumberForm[#, {
-            DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
-         AbsoluteThickness[0.1]}}}, None}}],
-  GridLines->{None, Automatic},
-  GridLinesStyle->Directive[
-    GrayLevel[0.4, 0.5], 
-    AbsoluteThickness[1], 
-    AbsoluteDashing[{1, 2}]],
-  ImagePadding->{{36., 1.5}, {14., 3.616045}},
-  ImageSize->Medium,
-  Method->{},
-  PlotRange->{{0.6875, 16.3125}, {0.005754541666666667, 0.007008708333333333}},
-  PlotRangeClipping->True,
-  PlotRangePadding->Automatic,
-  Ticks->{Charting`FindScaledTicks[
-     (Charting`SimpleTicks[#, #2, 6]& )[
-      SlotSequence[1]], {Identity, Identity}]& , Charting`FindScaledTicks[
-     (Charting`SimpleTicks[#, #2, 6]& )[
-      SlotSequence[1]], {Identity, Identity}]& }]], "Text",
+ RowBox[{
+  GraphicsBox[{{}, {{{}, {}, {}, {}, 
+      {RGBColor[0.34398, 0.49112, 0.89936], Opacity[0.3], 
+       LineBox[{{1., 0.00581725}, {1., 0.006271}}], 
+       LineBox[{{2., 0.00581725}, {2., 0.006639}}], 
+       LineBox[{{3., 0.00581725}, {3., 0.006946}}], 
+       LineBox[{{4., 0.00581725}, {4., 0.006195}}], 
+       LineBox[{{5., 0.00581725}, {5., 0.006021}}], 
+       LineBox[{{6., 0.00581725}, {6., 0.006632}}], 
+       LineBox[{{7., 0.00581725}, {7., 0.006618}}], 
+       LineBox[{{8., 0.00581725}, {8., 0.005954}}], 
+       LineBox[{{9., 0.00581725}, {9., 0.006263}}], 
+       LineBox[{{10., 0.00581725}, {10., 0.006017}}], 
+       LineBox[{{11., 0.00581725}, {11., 0.005871}}], 
+       LineBox[{{12., 0.00581725}, {12., 0.005979}}], 
+       LineBox[{{13., 0.00581725}, {13., 0.006151}}], 
+       LineBox[{{14., 0.00581725}, {14., 0.005877}}], 
+       LineBox[{{15., 0.00581725}, {15., 0.006075}}], 
+       LineBox[{{16., 0.00581725}, {16., 0.006123}}]}}, {
+      {RGBColor[0.34398, 0.49112, 0.89936], PointSize[0.019444444444444445`], 
+       AbsoluteThickness[3], CapForm["Butt"], 
+       GeometricTransformationBox[InsetBox[
+         GraphicsBox[
+          {RGBColor[0.34398, 0.49112, 0.89936], PointSize[
+           0.019444444444444445`], AbsoluteThickness[3], CapForm["Butt"], 
+           {GrayLevel[1], DiskBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}, 
+           {AbsoluteThickness[1.5], Dashing[{}], 
+            CircleBox[{0, 0}, Offset[{3., 3.}, {0., 0.}]]}}], {0., 0.}], {{{
+        1., 0.006271}}, {{2., 0.006639}}, {{3., 0.006946}}, {{4., 
+        0.006195}}, {{5., 0.006021}}, {{6., 0.006632}}, {{7., 0.006618}}, {{
+        8., 0.005954}}, {{9., 0.006263}}, {{10., 0.006017}}, {{11., 
+        0.005871}}, {{12., 0.005979}}, {{13., 0.006151}}, {{14., 
+        0.005877}}, {{15., 0.006075}}, {{16., 0.006123}}}]}, {}}}, 
+    InsetBox["", {11.176841085271317`, 0.006927637924392021}, {Left, Top}, {
+     3.68217054263566, Automatic},
+     Alignment->{Left, Top}], InsetBox[
+     StyleBox[
+      RowBox[{
+       RowBox[{"sha1", "(", ")"}], " ", "inside", " ", "byte", " ", 
+       "comparison"}],
+      FontFamily->"The Sans Mono Condensed-",
+      FontSize->12,
+      FontWeight->"Bold"], {7.688468992248058, 0.006864714378383802}, {
+     Left, Baseline},
+     Alignment->{Left, Top}]},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{False, False},
+   AxesLabel->{
+     FormBox["\"request no.\"", TraditionalForm], 
+     FormBox["\"time\"", TraditionalForm]},
+   AxesOrigin->{0, 0.00581725},
+   DisplayFunction->Identity,
+   Frame->{{True, False}, {True, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameStyle->{{
+      StrokeForm[
+       Opacity[0]], 
+      StrokeForm[
+       Opacity[0]]}, {Automatic, None}},
+   FrameTicks->FrontEndValueCache[{{Charting`FindScaledTicks[
+        (Charting`SimpleTicks[#, #2, 6]& )[
+         SlotSequence[1]], {Identity, Identity}]& , None}, {
+      Charting`FindScaledTicks[
+        (Charting`SimpleTicks[#, #2, 6]& )[
+         SlotSequence[1]], {Identity, Identity}]& , None}}, {{{{0.006, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"0.00600\"", 0.006, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {0.00625, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"0.00625\"", 0.00625, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {0.0065, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"0.00650\"", 0.0065, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {0.00675, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"0.00675\"", 0.00675, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {0.007, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"0.00700\"", 0.007, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 5.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}}, None}, {{{2.5, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"2.5\"", 2.5, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {5., 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"5.0\"", 5., AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {7.5, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"7.5\"", 7.5, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {10., 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"10.0\"", 10., AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {12.5, 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"12.5\"", 12.5, AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}, {15., 
+         FormBox[
+          TagBox[
+           InterpretationBox["\"15.0\"", 15., AutoDelete -> True], 
+           NumberForm[#, {
+             DirectedInfinity[1], 1.}]& ], TraditionalForm], {0.01, 0.}, {
+          AbsoluteThickness[0.1]}}}, None}}],
+   GridLines->{None, Automatic},
+   GridLinesStyle->Directive[
+     GrayLevel[0.4, 0.5], 
+     AbsoluteThickness[1], 
+     AbsoluteDashing[{1, 2}]],
+   ImagePadding->{{36., 1.5}, {14., 3.616045}},
+   ImageSize->Medium,
+   Method->{},
+   PlotRange->{{0.6875, 16.3125}, {0.005754541666666667, 
+    0.007008708333333333}},
+   PlotRangeClipping->True,
+   PlotRangePadding->Automatic,
+   Ticks->{Charting`FindScaledTicks[
+      (Charting`SimpleTicks[#, #2, 6]& )[
+       SlotSequence[1]], {Identity, Identity}]& , Charting`FindScaledTicks[
+      (Charting`SimpleTicks[#, #2, 6]& )[
+       SlotSequence[1]], {Identity, Identity}]& }], 
+  "\[LineSeparator]"}]], "Text",
  CellChangeTimes->{{3.6596225598087263`*^9, 3.659622574478444*^9}, {
    3.659622657425501*^9, 3.6596226692686*^9}, {3.6596230621691227`*^9, 
    3.659623110220495*^9}, 3.65962314605717*^9, {3.659623585969378*^9, 
-   3.659623586909668*^9}}],
+   3.659623586909668*^9}, 3.659629112589485*^9}],
 
 Cell[BoxData[
  GraphicsBox[{{}, {{{}, {}, {}, {}, 
@@ -882,7 +693,16 @@ Cell[BoxData[
       SlotSequence[1]], {Identity, Identity}]& }]], "Text",
  CellChangeTimes->{{3.659623404089525*^9, 3.659623432515953*^9}, {
   3.6596234643188953`*^9, 3.659623470599518*^9}, {3.659623514239706*^9, 
-  3.659623528372665*^9}}]
+  3.659623528372665*^9}}],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.6596315646491013`*^9, 3.659631564651516*^9}}],
+
+Cell[BoxData["frequencies"], "Input",
+ CellChangeTimes->{{3.659631576327457*^9, 3.659631577256461*^9}}],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.6596315646491013`*^9, 3.659631567832346*^9}}]
 },
 WindowSize->{840, 1001},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -907,13 +727,18 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 5213, 119, 582, "Input"],
-Cell[5796, 143, 4736, 106, 344, "Output"],
-Cell[10535, 251, 6595, 150, 235, "Output"]
+Cell[580, 22, 7792, 168, 768, "Input"],
+Cell[8375, 192, 167, 4, 21, "Print"]
 }, Open  ]],
-Cell[17145, 404, 6569, 150, 228, "Text"],
-Cell[23717, 556, 6598, 149, 225, "Text"],
-Cell[30318, 707, 7441, 177, 228, "Text"]
+Cell[8557, 199, 44, 1, 4, "PageBreak",
+ PageBreakBelow->True],
+Cell[8604, 202, 380, 6, 22, "Text"],
+Cell[8987, 210, 6619, 151, 228, "Text"],
+Cell[15609, 363, 6817, 153, 253, "Text"],
+Cell[22429, 518, 7441, 177, 228, "Text"],
+Cell[29873, 697, 84, 1, 20, "Text"],
+Cell[29960, 700, 103, 1, 29, "Input"],
+Cell[30066, 703, 84, 1, 20, "Text"]
 }
 ]
 *)
