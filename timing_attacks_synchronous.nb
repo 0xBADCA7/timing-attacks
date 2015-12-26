@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    400380,       8072]
-NotebookOptionsPosition[    398145,       8010]
-NotebookOutlinePosition[    398728,       8031]
-CellTagsIndexPosition[    398685,       8028]
+NotebookDataLength[    400438,       8073]
+NotebookOptionsPosition[    398203,       8011]
+NotebookOutlinePosition[    398786,       8032]
+CellTagsIndexPosition[    398743,       8029]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -48,8 +48,8 @@ Cell[BoxData[
      RowBox[{"{", "}"}]}], ";"}], " ", 
    RowBox[{"(*", "Guesses", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"uri", "=", "\"\<http://standard.io:8080/?password=\>\""}], ";"}],
-    "\[IndentingNewLine]", 
+    RowBox[{"uri", "=", "\"\<http://localhost:8080/?password=123&user=\>\""}],
+     ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"HASHLENGTH", " ", "=", " ", "40"}], ";"}], "\[IndentingNewLine]",
     "\[IndentingNewLine]", 
@@ -187,7 +187,8 @@ Cell[BoxData[
    3.659634102774181*^9}, 3.6596342264612913`*^9, {3.659634361528178*^9, 
    3.6596343634105453`*^9}, 3.659634493924801*^9, {3.659634694875978*^9, 
    3.659634705999799*^9}, {3.6599523029008636`*^9, 3.659952304827896*^9}, {
-   3.660037825910096*^9, 3.6600378268133163`*^9}},
+   3.660037825910096*^9, 3.6600378268133163`*^9}, {3.660071559651883*^9, 
+   3.660071580866601*^9}},
  FontFamily->"The Sans Mono Condensed-",
  FontSize->13],
 
@@ -8031,49 +8032,49 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 7844, 169, 802, "Input"],
+Cell[580, 22, 7902, 170, 768, "Input"],
 Cell[CellGroupData[{
-Cell[8449, 195, 15326, 273, 235, "Print"],
-Cell[23778, 470, 32442, 678, 3062, "Print"],
-Cell[56223, 1150, 29089, 502, 235, 14141, 254, "CachedBoxData", "BoxData", \
+Cell[8507, 196, 15326, 273, 235, "Print"],
+Cell[23836, 471, 32442, 678, 3062, "Print"],
+Cell[56281, 1151, 29089, 502, 235, 14141, 254, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[85315, 1654, 29310, 614, 2758, "Print"],
-Cell[114628, 2270, 25863, 468, 235, 11928, 237, "CachedBoxData", "BoxData", \
+Cell[85373, 1655, 29310, 614, 2758, "Print"],
+Cell[114686, 2271, 25863, 468, 235, 11928, 237, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[140494, 2740, 26197, 550, 2454, "Print"],
-Cell[166694, 3292, 23909, 419, 235, 11869, 219, "CachedBoxData", "BoxData", \
+Cell[140552, 2741, 26197, 550, 2454, "Print"],
+Cell[166752, 3293, 23909, 419, 235, 11869, 219, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[190606, 3713, 23070, 486, 2150, "Print"],
-Cell[213679, 4201, 20976, 387, 235, 9696, 199, "CachedBoxData", "BoxData", \
+Cell[190664, 3714, 23070, 486, 2150, "Print"],
+Cell[213737, 4202, 20976, 387, 235, 9696, 199, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[234658, 4590, 19955, 422, 1846, "Print"],
-Cell[254616, 5014, 19009, 351, 235, 8728, 180, "CachedBoxData", "BoxData", \
+Cell[234716, 4591, 19955, 422, 1846, "Print"],
+Cell[254674, 5015, 19009, 351, 235, 8728, 180, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[273628, 5367, 16841, 358, 1542, "Print"],
-Cell[290472, 5727, 15229, 279, 235, 8150, 160, "CachedBoxData", "BoxData", \
+Cell[273686, 5368, 16841, 358, 1542, "Print"],
+Cell[290530, 5728, 15229, 279, 235, 8150, 160, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[305704, 6008, 13728, 294, 1238, "Print"],
-Cell[319435, 6304, 13571, 261, 236, 6504, 142, "CachedBoxData", "BoxData", \
+Cell[305762, 6009, 13728, 294, 1238, "Print"],
+Cell[319493, 6305, 13571, 261, 236, 6504, 142, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[333009, 6567, 10607, 230, 934, "Print"],
-Cell[343619, 6799, 11200, 221, 236, 5644, 127, "CachedBoxData", "BoxData", \
+Cell[333067, 6568, 10607, 230, 934, "Print"],
+Cell[343677, 6800, 11200, 221, 236, 5644, 127, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[354822, 7022, 7489, 166, 630, "Print"],
-Cell[362314, 7190, 9669, 199, 235, 5549, 129, "CachedBoxData", "BoxData", \
+Cell[354880, 7023, 7489, 166, 630, "Print"],
+Cell[362372, 7191, 9669, 199, 235, 5549, 129, "CachedBoxData", "BoxData", \
 "Print"],
-Cell[371986, 7391, 4365, 102, 326, "Print"],
-Cell[376354, 7495, 167, 4, 21, "Print"]
+Cell[372044, 7392, 4365, 102, 326, "Print"],
+Cell[376412, 7496, 167, 4, 21, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[376548, 7503, 44, 1, 1, "PageBreak",
+Cell[376606, 7504, 44, 1, 1, "PageBreak",
  PageBreakBelow->True],
-Cell[376595, 7506, 380, 6, 22, "Text"],
-Cell[376978, 7514, 6619, 151, 228, "Text"],
-Cell[383600, 7667, 6817, 153, 253, "Text"],
-Cell[390420, 7822, 7441, 177, 228, "Text"],
-Cell[397864, 8001, 84, 1, 20, "Text"],
-Cell[397951, 8004, 103, 1, 29, "Input"],
-Cell[398057, 8007, 84, 1, 20, "Text"]
+Cell[376653, 7507, 380, 6, 22, "Text"],
+Cell[377036, 7515, 6619, 151, 228, "Text"],
+Cell[383658, 7668, 6817, 153, 253, "Text"],
+Cell[390478, 7823, 7441, 177, 228, "Text"],
+Cell[397922, 8002, 84, 1, 20, "Text"],
+Cell[398009, 8005, 103, 1, 29, "Input"],
+Cell[398115, 8008, 84, 1, 20, "Text"]
 }
 ]
 *)

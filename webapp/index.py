@@ -50,7 +50,8 @@ def get_hash_from_db(username):
 def type2_check(username, password):
     """
     Type 2 vulnerable code.
-    Uses database connectivity for additional natural latency.
+    Uses database connectivity for additional natural latency. This only
+    gives an idea of user names that exist.
     :param username: User-supplied user name
     :param password: User-supplied password
     :return: True if password is correct and user exists otherwise False
@@ -58,6 +59,7 @@ def type2_check(username, password):
     hash_from_db = get_hash_from_db(username)
 
     if hash_from_db:
+        # sleep(0.5)
         test_hash = sha1(password.encode('utf8')).hexdigest()
         if test_hash == hash_from_db:
             print("Correct password")
@@ -76,15 +78,15 @@ def index():
     if password:
         # Replace type1_check with other types to
         # play with various workloads
-        is_admin = type2_check(username, password)
+        correct_password = type2_check(username, password)
 
-        if is_admin:
-            username = 'admin'
+        if correct_password and username == 'admin':
+            is_admin = True
         else:
             username = 'stranger'
             err = True
 
-    response = make_response(render_template('index.html', user=username, error=err))
+    response = make_response(render_template('index.html', user=username, error=err, admin=is_admin))
     response.status_code = 500 if is_admin else 500
 
     return response

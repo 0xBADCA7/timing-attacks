@@ -8,7 +8,7 @@
     {% else %}
         Hello, {{ user }}.
 
-        {% if user == 'admin' %}
+        {% if admin %}
         Access granted
         {% else %}
         Hint: Pass <pre>?password=...&user=...</pre> or <pre>?password=...</pre> to get access. Can you guess it?

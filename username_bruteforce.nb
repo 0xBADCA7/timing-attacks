@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9346,        227]
+NotebookOptionsPosition[      9016,        210]
+NotebookOutlinePosition[      9376,        226]
+CellTagsIndexPosition[      9333,        223]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "*", " ", "Synchronous", " ", "username", " ", "enumeration", " ", 
+    "test"}], " ", "**)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"timingsList", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"frequencies", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"guesses", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<bofh\>\"", ",", " ", "\"\<root\>\"", ",", " ", "\"\<qwerty\>\"", 
+       ",", "\"\<admin\>\"", ",", " ", "\"\<nimda\>\"", ",", 
+       "\"\<Administrator\>\"", ",", " ", "\"\<0xBADCA7\>\"", ",", " ", 
+       "\"\<support\>\"", ",", " ", "\"\<john\>\""}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "uri", "=", 
+     "\"\<http://localhost:8080/?password=wrongpassword&user=\>\""}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Iterator", " ", "function"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"enumFunc", "[", 
+     RowBox[{"payload_", ",", " ", "iterator_"}], "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"endpoint", " ", "=", " ", 
+       RowBox[{"uri", " ", "<>", " ", 
+        RowBox[{"ToString", "[", "payload", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"timeStarted", " ", "=", " ", 
+       RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Dispatch", " ", "a", " ", "request"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"statusCode", " ", "=", " ", 
+       RowBox[{"URLFetch", "[", 
+        RowBox[{"endpoint", ",", " ", 
+         RowBox[{"{", "\"\<StatusCode\>\"", "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"timeDone", " ", "=", " ", 
+       RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"timeDifference", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"AbsoluteTime", "[", "]"}], "-", " ", "timeStarted"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"timingsList", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+         "timeStarted", ",", "timeDone", ",", "timeDifference", ",", " ", 
+          "payload", ",", " ", "iterator"}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"frequencies", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+         "payload", ",", " ", "iterator", ",", " ", "timeDifference"}], 
+         "}"}]}], "]"}]}], "\[IndentingNewLine]", ")"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", " ", "[", 
+     RowBox[{
+      RowBox[{"q", "=", "0"}], ",", " ", 
+      RowBox[{"q", " ", "<", " ", "16"}], ",", " ", 
+      RowBox[{"q", "++"}], ",", 
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", " ", "[", 
+         RowBox[{
+          RowBox[{"j", "=", "1"}], ",", 
+          RowBox[{"j", " ", "\[LessEqual]", " ", 
+           RowBox[{"Length", "[", "guesses", "]"}]}], ",", 
+          RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"candidate", "=", " ", 
+             RowBox[{"guesses", "[", 
+              RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{"Feed", " ", "into", " ", 
+              RowBox[{"iterator", "/", "request"}], " ", "dispatcher"}], 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"enumFunc", "[", 
+             RowBox[{"candidate", ",", " ", 
+              RowBox[{
+               RowBox[{"ToString", "[", "q", "]"}], " ", "<>", " ", 
+               "\"\<.\>\"", " ", "<>", " ", 
+               RowBox[{"ToString", "[", "j", "]"}]}]}], "]"}]}], 
+           "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"q", "\[Equal]", " ", "15"}], ",", " ", 
+          RowBox[{"(", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Print", " ", "a", " ", "table", " ", "with", " ", "the", " ", 
+             "response", " ", "timings"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"Print", "[", 
+              RowBox[{"TableForm", "[", 
+               RowBox[{"timingsList", ",", 
+                RowBox[{"TableHeadings", "\[Rule]", 
+                 RowBox[{"{", 
+                  RowBox[{"None", ",", " ", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    "\"\<Time started\>\"", ",", " ", "\"\<Done\>\"", ",", 
+                    "\"\<Difference\>\"", ",", " ", "\"\<Payload\>\"", ",", 
+                    " ", "\"\<Request no.\>\""}], "}"}]}], "}"}]}]}], "]"}], 
+              "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Show", "[", 
+              RowBox[{
+               RowBox[{"ListPlot", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"timingsList", "\[LeftDoubleBracket]", 
+                    RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], ",",
+                    " ", 
+                   RowBox[{"timingsList", "\[LeftDoubleBracket]", 
+                    RowBox[{"All", ",", "4"}], "\[RightDoubleBracket]"}]}], 
+                  "}"}], ",", 
+                 RowBox[{"PlotTheme", "\[Rule]", "\"\<Business\>\""}], ",", 
+                 RowBox[{"AxesLabel", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"\"\<request no.\>\"", ",", "\"\<time\>\""}], 
+                   "}"}]}], ",", 
+                 RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}], ",", 
+               RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", " ", 
+               RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], 
+            "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"BarChart", "[", 
+              RowBox[{
+               RowBox[{"timingsList", "\[LeftDoubleBracket]", 
+                RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
+               RowBox[{"ChartLabels", " ", "\[Rule]", " ", 
+                RowBox[{"Placed", "[", 
+                 RowBox[{
+                  RowBox[{"timingsList", "\[LeftDoubleBracket]", 
+                   RowBox[{"All", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
+                  "Bottom", ",", 
+                  RowBox[{
+                   RowBox[{"Rotate", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"90", "Degree"}]}], "]"}], "&"}]}], "]"}]}]}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", ")"}]}], "]"}], ";"}], 
+       "\[IndentingNewLine]", ")"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.660071755245205*^9, 3.660071800344204*^9}, {
+   3.660071847307585*^9, 3.6600718968830147`*^9}, {3.660071936907325*^9, 
+   3.660071947599081*^9}, {3.6600720071061373`*^9, 3.660072033090163*^9}, {
+   3.660072324923698*^9, 3.660072397926971*^9}, {3.660072449287575*^9, 
+   3.660072477593012*^9}, {3.6600726100294933`*^9, 3.6600726181036587`*^9}, {
+   3.6600736681015673`*^9, 3.6600737518962107`*^9}, {3.660073900906826*^9, 
+   3.66007390506439*^9}, {3.660073936585779*^9, 3.660073956100883*^9}, {
+   3.660074140827695*^9, 3.660074140880517*^9}, {3.6600742969617977`*^9, 
+   3.6600743095774307`*^9}, {3.660075206779298*^9, 3.660075218418049*^9}, {
+   3.660075410932165*^9, 3.6600754122484217`*^9}, {3.6601092965579987`*^9, 
+   3.6601093006301317`*^9}, 3.660109340356318*^9, {3.660109423709302*^9, 
+   3.6601094385825243`*^9}}],
+
+Cell[BoxData["\[LineSeparator]"], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.6600747485616217`*^9, 3.660074765148315*^9}, {
+  3.660074898470498*^9, 3.660074900790799*^9}}]
+}, Open  ]]
+},
+WindowSize->{1155, 880},
+WindowMargins->{{169, Automatic}, {57, Automatic}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 8208, 179, 760, "Input"],
+Cell[8791, 203, 209, 4, 37, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
